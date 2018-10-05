@@ -8,13 +8,19 @@ import pytest
 import numpy as np
 
 def multiply(a, b):
-    # fix me!
-    pass
+    if(len(a[0]) != len(b)):
+        print('ERROR - wrong matrix shape')
+    else:
+        b_t = list(zip(*b))
+        result = [ [] for i in range(len(a))]
+        for a_index, i in enumerate(a):
+            for j in b_t:
+                result[a_index].append(sum([i[item]*j[item] for item in range(len(a[0]))]))
+    return result 
 
 
 def multiplyWithNumpy(a, b):
-    # fix me!
-    pass
+    return np.dot(np.array(a), np.array(b))
 
 
 testdata = [
@@ -37,7 +43,3 @@ testdataImpossibleProducts = [
 def test_multiplyIncompatibleMatrices(multiplicationFunc, a, b):
     with pytest.raises(Exception) as e:
         multiplicationFunc(a, b)
-
-
-
-print('Test')
