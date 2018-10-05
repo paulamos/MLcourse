@@ -40,3 +40,4 @@ def test_multiplyIncompatibleMatrices(multiplicationFunc, a, b):
 
 
 
+print('Test')
